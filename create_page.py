@@ -34,6 +34,30 @@ def render_page():
                 var_2='def',
                 var_3=[10, 20, 30],
                 var_4={ 'param_1': 100, 'param_2': 200, 'param_3': 300 },
+                node_result={
+                    'sensing': {
+                        'num_total': 20,
+                        'num_passed': 20,
+                        'html': 'sensing.html'
+                    },
+                    'localization': {
+                        'num_total': 20,
+                        'num_passed': 5,
+                        'html': 'localization.html'
+                    },
+                },
+                edge_result={
+                    'sensing2localization': {
+                        'num_total': 20,
+                        'num_passed': 20,
+                        'html': 'sensing2localization.html'
+                    },
+                    'ext2sensing': {
+                        'num_total': 20,
+                        'num_passed': 5,
+                        'html': 'ext2sensing.html'
+                    },
+                }
             )
 
         with open(destination_path, 'w', encoding='utf-8') as f_html:
