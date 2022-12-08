@@ -1,12 +1,10 @@
 var cy = window.cy = cytoscape({
-  container: document.getElementById('cy'),
-
-  boxSelectionEnabled: false,
+  container: document.getElementById("cy"),
 
   style: [
     {
-      selector: 'node',
-      css: {
+      selector: "node",
+      style: {
         "label": "data(text)",
         "font-size": "10",
         "text-wrap": "wrap",
@@ -14,166 +12,218 @@ var cy = window.cy = cytoscape({
         "height": "20",
       }
     },
-
     {
-      "selector": ".result",
-      "style": {
+      selector: ":parent",
+      style: {
+        "label": "",
+        "shape": "round-rectangle",
+      }
+    },
+    {
+      selector: ".result",
+      style: {
         "text-valign": "center",
         "text-halign": "right",
-
       }
     },
     {
-      selector: ':parent',
-      css: {
-        'label': '',
-        'shape': 'round-rectangle',
-      }
-    },
-    {
-      "selector": ".external",
-      "style": {
+      selector: ".external",
+      style: {
         "text-valign": "top",
         "text-halign": "center",
-        'shape': 'round-rectangle',
+        "shape": "round-rectangle",
         "width": "10",
         "height": "10",
         "background-color": "#333",
       }
     },
     {
-      selector: 'edge',
-      css: {
+      selector: "edge",
+      style: {
         "source-label": "data(text)",
         "source-text-offset": 25,
+        "source-text-margin-y": 10,
         "font-size": "10",
-        'curve-style': 'bezier',
-        'target-arrow-shape': 'triangle',
+        "curve-style": "bezier",
+        "target-arrow-shape": "triangle",
         "text-background-color": "#FFF",
         "text-background-opacity": "0.8",
-        
       }
-    }
+    },
+    {
+      selector: ".pass",
+      style: {
+        "background-color": "#0F0",
+        "line-color": "#0F0",
+        "target-arrow-color": "#0F0",
+      }
+    },
+    {
+      selector: ".failed",
+      style: {
+        "background-color": "#F00",
+        "line-color": "#F00",
+        "target-arrow-color": "#F00",
+      }
+    },
   ],
 
   elements: {
     nodes: [
-      { data: { id: 'Sensing_box' } },
-      { data: { id: 'Localization_box' } },
-      { data: { id: 'Perception_box' } },
-      { data: { id: 'Planning_box' } },
-      { data: { id: 'Control_box' } },
-      { data: { id: 'Vehicle_box' } },
-      { data: { id: 'System_box' } },
+      { data: { id: "sensing_box" } },
+      { data: { id: "localization_box" } },
+      { data: { id: "perception_box" } },
+      { data: { id: "planning_box" } },
+      { data: { id: "control_box" } },
+      { data: { id: "vehicle_box" } },
+      { data: { id: "system_box" } },
 
-      { data: { id: 'Sensing', parent: 'Sensing_box' , text: "Sensing\n10/20"},
-        classes: 'result',
-        position: { x: 0, y: 0 }
+      { data: { id: "sensing", parent: "sensing_box" , text: "sensing\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'Localization', parent: 'Localization_box' , text: "Localization\n10/20"},
-        classes: 'result',
-        position: { x: 0, y: 100 }
+      { data: { id: "localization", parent: "localization_box" , text: "localization\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'Perception', parent: 'Perception_box' , text: "Perception\n10/20"},
-        classes: 'result',
-        position: { x: 200, y: 100 }
+      { data: { id: "perception", parent: "perception_box" , text: "perception\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'Planning', parent: 'Planning_box' , text: "Planning\n10/20"},
-        classes: 'result',
-        position: { x: 200, y: 0 }
+      { data: { id: "planning", parent: "planning_box" , text: "planning\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'Control', parent: 'Control_box' , text: "Control\n10/20"},
-        classes: 'result',
-        position: { x: 250, y: -100 }
+      { data: { id: "control", parent: "control_box" , text: "control\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'Vehicle', parent: 'Vehicle_box' , text: "Vehicle\n10/20"},
-        classes: 'result',
-        position: { x: 50, y: -100 }
+      { data: { id: "vehicle", parent: "vehicle_box" , text: "vehicle\n10/20"},
+        classes: "result",
       },
-      { data: { id: 'System', parent: 'System_box' , text: "System\n10/20"},
-        classes: 'result',
-        position: { x: 150, y: -200 }
+      { data: { id: "system", parent: "system_box" , text: "system\n10/20"},
+        classes: "result",
       },
 
-      { data: { id: 'Sensing_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "sensing_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'Localization_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "localization_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'Perception_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "perception_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'Planning_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "planning_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'Control_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "control_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'Vehicle_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "vehicle_ext", text: "External"},
+        classes: "external"
       },
 
-      { data: { id: 'System_ext', text: "External"},
-        classes: 'external'
+      { data: { id: "system_ext", text: "External"},
+        classes: "external"
       },
     ],
 
     edges: [
-      { data: { id: 'sensing_ext', source: 'Sensing_ext', target: 'Sensing_box', text: "10/20" } },
-      { data: { id: 'perception_ext', source: 'Perception_ext', target: 'Perception_box', text: "10/20" } },
-      { data: { id: 'localization_ext', source: 'Localization_ext', target: 'Localization_box', text: "10/20" } },
-      { data: { id: 'planning_ext', source: 'Planning_ext', target: 'Planning_box', text: "10/20" } },
-      { data: { id: 'control_ext', source: 'Control_ext', target: 'Control_box', text: "10/20" } },
-      { data: { id: 'system_ext', source: 'System_ext', target: 'System_box', text: "10/20" } },
-      { data: { id: 'vehicle_ext', source: 'Vehicle_ext', target: 'Vehicle_box', text: "10/20" } },
-
-
-      { data: { id: 'sensing2localization', source: 'Sensing_box', target: 'Localization_box', text: "10/20" } },
-      { data: { id: 'sensing2perception', source: 'Sensing_box', target: 'Perception_box', text: "10/20" } },
-      { data: { id: 'sensing2planning', source: 'Sensing_box', target: 'Planning_box', text: "10/20" } },
-      { data: { id: 'perception2planning', source: 'Perception_box', target: 'Planning_box', text: "10/20" } },
-      { data: { id: 'localization2perception', source: 'Localization_box', target: 'Perception_box', text: "10/20" } },
-      { data: { id: 'localization2planning', source: 'Localization_box', target: 'Planning_box', text: "10/20" } },
-      // { data: { id: 'localization2control', source: 'Localization_box', target: 'Control_box', text: "10/20" } },
-      { data: { id: 'planning2control', source: 'Planning_box', target: 'Control_box', text: "10/20" } },
-      { data: { id: 'control2vehicle', source: 'Control_box', target: 'Vehicle_box', text: "10/20" } },
-      { data: { id: 'vehicle2control', source: 'Vehicle_box', target: 'Control_box', text: "10/20" } },
-      { data: { id: 'vehicle2sensing', source: 'Vehicle_box', target: 'Sensing_box', text: "10/20" } },
-
-      { data: { id: 'vehicle2system', source: 'Vehicle_box', target: 'System_box', text: "10/20" } },
-      { data: { id: 'control2system', source: 'Control_box', target: 'System_box', text: "10/20" } },
-      { data: { id: 'system2control', source: 'System_box', target: 'Control_box', text: "10/20" } },
-      // { data: { id: 'localization2system', source: 'Localization_box', target: 'System_box', text: "10/20" } },
-      
+      // { data: { id: "sensing_ext", source: "sensing_ext", target: "sensing_box", text: "10/20" } },
     ]
   },
 
-  layout: {
-    name: 'preset',
-    padding: 5,
-    fit: false
-  },
-  zoom: 2,
-  pan: { x: 300, y: 600 },
+  // layout: {
+  //   name: "preset",
+  //   padding: 5,
+  // },
+  // zoom: 2,
+  // pan: { x: 300, y: 600 },
 });
 
-cy.getElementById('Sensing_ext').position('x', cy.getElementById('Sensing_box').position('x') - 100)
-cy.getElementById('Sensing_ext').position('y', cy.getElementById('Sensing_box').position('y'))
-cy.getElementById('Localization_ext').position('x', cy.getElementById('Localization_box').position('x') - 100)
-cy.getElementById('Localization_ext').position('y', cy.getElementById('Localization_box').position('y'))
-cy.getElementById('Perception_ext').position('x', cy.getElementById('Perception_box').position('x') + 100)
-cy.getElementById('Perception_ext').position('y', cy.getElementById('Perception_box').position('y'))
-cy.getElementById('Planning_ext').position('x', cy.getElementById('Planning_box').position('x') + 100)
-cy.getElementById('Planning_ext').position('y', cy.getElementById('Planning_box').position('y'))
-cy.getElementById('Control_ext').position('x', cy.getElementById('Control_box').position('x') + 100)
-cy.getElementById('Control_ext').position('y', cy.getElementById('Control_box').position('y'))
-cy.getElementById('Vehicle_ext').position('x', cy.getElementById('Vehicle_box').position('x') - 100)
-cy.getElementById('Vehicle_ext').position('y', cy.getElementById('Vehicle_box').position('y'))
-cy.getElementById('System_ext').position('x', cy.getElementById('System_box').position('x') - 100)
-cy.getElementById('System_ext').position('y', cy.getElementById('System_box').position('y'))
+cy.getElementById("sensing").position({"x": 0, "y": 0});
+cy.getElementById("localization").position({"x": 0, "y": 100});
+cy.getElementById("perception").position({"x": 200, "y": 100});
+cy.getElementById("planning").position({"x": 200, "y": 0});
+cy.getElementById("control").position({"x": 250, "y": -100});
+cy.getElementById("vehicle").position({"x": 50, "y": -100});
+cy.getElementById("system").position({"x": 150, "y": -200});
+
+cy.getElementById("sensing_ext").position("x", cy.getElementById("sensing_box").position("x") - 100);
+cy.getElementById("sensing_ext").position("y", cy.getElementById("sensing_box").position("y"));
+cy.getElementById("localization_ext").position("x", cy.getElementById("localization_box").position("x") - 100);
+cy.getElementById("localization_ext").position("y", cy.getElementById("localization_box").position("y"));
+cy.getElementById("perception_ext").position("x", cy.getElementById("perception_box").position("x") + 100);
+cy.getElementById("perception_ext").position("y", cy.getElementById("perception_box").position("y"));
+cy.getElementById("planning_ext").position("x", cy.getElementById("planning_box").position("x") + 100);
+cy.getElementById("planning_ext").position("y", cy.getElementById("planning_box").position("y"));
+cy.getElementById("control_ext").position("x", cy.getElementById("control_box").position("x") + 100);
+cy.getElementById("control_ext").position("y", cy.getElementById("control_box").position("y"));
+cy.getElementById("vehicle_ext").position("x", cy.getElementById("vehicle_box").position("x") - 100);
+cy.getElementById("vehicle_ext").position("y", cy.getElementById("vehicle_box").position("y"));
+cy.getElementById("system_ext").position("x", cy.getElementById("system_box").position("x") - 100);
+cy.getElementById("system_ext").position("y", cy.getElementById("system_box").position("y"));
+
+cy.add([
+  { group: "edges", data: { id: "ext2sensing", source: "sensing_ext", target: "sensing_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2sensing", source: "sensing_ext", target: "sensing_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2perception", source: "perception_ext", target: "perception_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2localization", source: "localization_ext", target: "localization_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2planning", source: "planning_ext", target: "planning_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2control", source: "control_ext", target: "control_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2system", source: "system_ext", target: "system_box", text: "10/20" } },
+  { group: "edges", data: { id: "ext2vehicle", source: "vehicle_ext", target: "vehicle_box", text: "10/20" } },
+]);
+
+cy.add([
+  { group: "edges", data: { id: "sensing2localization", source: "sensing_box", target: "localization_box", text: "10/20" } },
+  { group: "edges", data: { id: "sensing2perception", source: "sensing_box", target: "perception_box", text: "10/20" } },
+  { group: "edges", data: { id: "sensing2planning", source: "sensing_box", target: "planning_box", text: "10/20" } },
+  { group: "edges", data: { id: "perception2planning", source: "perception_box", target: "planning_box", text: "10/20" } },
+  { group: "edges", data: { id: "localization2perception", source: "localization_box", target: "perception_box", text: "10/20" } },
+  { group: "edges", data: { id: "localization2planning", source: "localization_box", target: "planning_box", text: "10/20" } },
+  { group: "edges", data: { id: "localization2control", source: "localization_box", target: "control_box", text: "10/20" } },
+  { group: "edges", data: { id: "planning2control", source: "planning_box", target: "control_box", text: "10/20" } },
+  { group: "edges", data: { id: "control2vehicle", source: "control_box", target: "vehicle_box", text: "10/20" } },
+  { group: "edges", data: { id: "vehicle2control", source: "vehicle_box", target: "control_box", text: "10/20" } },
+  { group: "edges", data: { id: "vehicle2sensing", source: "vehicle_box", target: "sensing_box", text: "10/20" } },
+  { group: "edges", data: { id: "vehicle2system", source: "vehicle_box", target: "system_box", text: "10/20" } },
+  { group: "edges", data: { id: "control2system", source: "control_box", target: "system_box", text: "10/20" } },
+  { group: "edges", data: { id: "system2control", source: "system_box", target: "control_box", text: "10/20" } },
+  { group: "edges", data: { id: "localization2system", source: "localization_box", target: "system_box", text: "10/20" } },
+]);
+
+cy.fit();
+cy.zoomingEnabled(false);
+cy.panningEnabled(false);
+cy.boxSelectionEnabled(false);
+cy.nodes().lock();
+cy.nodes().unselectify();
+cy.edges().lock();
+cy.edges().unselectify();
+
+cy.getElementById("sensing").data("text", "sensing\n20/20");
+cy.getElementById("sensing").addClass("pass");
+
+cy.getElementById("sensing2localization").data("text", "20/20");
+cy.getElementById("sensing2localization").addClass("pass");
+
+cy.getElementById("localization").data("text", "localization\n19/20");
+cy.getElementById("localization").addClass("failed");
+
+cy.getElementById("localization2perception").data("text", "8/20");
+cy.getElementById("localization2perception").addClass("failed");
+
+
+cy.on("tap", "node", function(evt){
+  var node = evt.target;
+  console.log("apped " + node.id());
+});
+
+cy.on("tap", "edge", function(evt){
+  var edge = evt.target;
+  edge_name = edge.id();
+  window.open(edge_name + ".html", "_blank");
+});
+
